@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download File</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; background: #f4f6f8; padding: 20px; margin: 0; }
+        .container { background: white; max-width: 600px; margin: 20px auto; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        /* Kotak Iklan */
+        .iklan { background: #fff8e1; color: #8d6e63; padding: 30px; margin: 20px 0; border: 2px dashed #ffecb3; font-weight: bold; }
+
+        h2 { color: #333; margin-bottom: 5px; }
+        p { color: #666; margin-top: 0; }
+
+        /* Style Tombol Keren */
+        #btn-aksi {
+            display: inline-block;
+            background: #007bff; /* Biru */
+            color: white;
+            padding: 15px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,123,255,0.3);
+            user-select: none; /* Biar teks gak ke-blok pas diklik */
+        }
+
+        #btn-aksi:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,123,255,0.4); }
+        
+        /* Warna tombol pas lagi ngitung */
+        #btn-aksi.lagi-ngitung { background: #6c757d; cursor: wait; }
+        
+        /* Warna tombol pas udah siap */
+        #btn-aksi.siap { background: #28a745; box-shadow: 0 4px 6px rgba(40,167,69,0.3); }
+
+        .error { color: #dc3545; display: none; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="iklan">SPACE IKLAN ATAS</div>
+
+    <div class="container">
+        <h2 id="judul-file">
+            Downloader-File</h2>
+        <p>Terima kasih telah mengunjungi Downloader-File, platform penyedia layanan perantara unduhan yang dirancang untuk kecepatan dan kemudahan. Kami mengerti bahwa waktu Anda sangat berharga, itulah sebabnya sistem kami dioptimalkan untuk memproses tautan unduhan dalam hitungan detik.
+di sini, Anda bisa mendapatkan akses ke berbagai jenis file—mulai dari aplikasi, game modifikasi, dokumen, hingga media hiburan—secara gratis dan aman. Sistem kami secara otomatis memverifikasi ketersediaan file di server tujuan (seperti Sfile.mobi) sebelum Anda mengunduhnya, memastikan tautan yang Anda dapatkan bukanlah tautan rusak (broken link).</p>
+        <p>Klik tombol di bawah untuk memproses link.</p>
+
+        <div class="iklan">SPACE IKLAN TENGAH</div>
+
+        <a id="btn-aksi" href="#">( DOWNLOAD )</a>
+        
+        <p id="pesan-error" class="error">Link tidak ditemukan di database :(</p>
+    </div>
+
+    <div class="iklan">SPACE IKLAN BAWAH</div>
+
+    <script src="data.js"></script>
+
+    <script>
+        // --- LOGIKA JAVASCRIPT ---
+
+        // 1. Ambil nama slug dari URL
+        let path = window.location.pathname; 
+        let slug = path.replace("/", "").replace(".html", "");
+
+        // Elemen HTML
+        let btn = document.getElementById("btn-aksi");
+        let errorMsg = document.getElementById("pesan-error");
+        let judul = document.getElementById("judul-file");
+
+        // Status Tombol
+        let linkTujuan = "";
+        let sedangMenghitung = false;
+        let sudahSiap = false;
+
+        // Cek Database
+        if(slug === "" || slug === "index") {
+            judul.innerText = "Selamat Datang";
+            btn.style.display = "none";
+        } 
+        else if (database_link[slug]) {
+            // Kalau link ketemu di data.js
+            linkTujuan = database_link[slug];
+        } 
+        else {
+            // Kalau link SALAH / Gak ada
+            btn.style.display = "none";
+            errorMsg.style.display = "block";
+            judul.innerText = "Error 404";
+        }
+
+        // 2. Apa yang terjadi pas Tombol di-Klik?
+        btn.addEventListener("click", function(e) {
+            
+            // A. Kalau belum siap (masih awal atau lagi ngitung), JANGAN PINDAH HALAMAN DULU
+            if (!sudahSiap) {
+                e.preventDefault(); // Matikan fungsi link asli
+                
+                // Kalau timer belum jalan, jalankan sekarang
+                if (!sedangMenghitung && linkTujuan !== "") {
+                    mulaiHitungMundur();
+                }
+            }
+            // B. Kalau 'sudahSiap' bernilai true, biarkan dia pindah ke link asli (sfile.mobi)
+        });
+
+        // Fungsi Timer
+        function mulaiHitungMundur() {
+            sedangMenghitung = true;
+            btn.classList.add("lagi-ngitung"); // Ganti warna jadi abu
+            
+            let detik = 10;
+            btn.innerText = `( DOWNLOAD: ${detik} )`;
+
+            let timer = setInterval(function() {
+                detik--;
+                
+                if (detik > 0) {
+                    // Update teks angka
+                    btn.innerText = `( DOWNLOAD: ${detik} )`;
+                } else {
+                    // Waktu Habis!
+                    clearInterval(timer);
+                    berubahJadiLink();
+                }
+            }, 1000); // 1000ms = 1 detik
+        }
+
+        // Fungsi Pas Waktu Habis
+        function berubahJadiLink() {
+            sudahSiap = true; // Tandai sudah boleh pindah
+            btn.classList.remove("lagi-ngitung");
+            btn.classList.add("siap"); // Ganti warna jadi hijau
+            
+            btn.innerText = "GO TO LINK >>";
+            btn.href = linkTujuan; // Masukkan link sfile.mobi ke tombol
+        }
+    </script>
+
+</body>
+</html>
