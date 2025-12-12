@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="monetag" content="e07466796cc7c872adda27acad5742d8">
-    <meta name="c81817ba2cf85fd15fd15388867148f3057d11e0" content="c81817ba2cf85fd15fd15388867148f3057d11e0" />
+    <meta name="description" content="Downloader-File: Platform unduhan cepat dan aman.">
+    
     <title>Download File</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <script>(function(s){s.dataset.zone='10312457',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
-    </script>
-    <script src="https://3nbf4.com/act/files/tag.min.js?z=10312482" data-cfasync="false" async>
-    </script>
+    
     <style>
         body { 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -19,41 +16,47 @@
             padding: 20px; 
             margin: 0; 
         }
+
         .container { 
             background: white; 
             max-width: 600px; 
-            margin: 20px auto; 
+            margin: 40px auto; 
             padding: 30px; 
             border-radius: 12px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            min-height: 300px; 
         }
-        /* Style Judul */
+        
         h2 { 
             color: #333; 
             margin-bottom: 20px; 
-            font-size: 28px;
+            font-size: 28px; 
         }
-        /* Style Deskripsi (Biar Rapi & Enak Dibaca) */
+
         .deskripsi {
-            text-align: left; /* Rata Kiri */
+            text-align: left;
             font-size: 15px;
             line-height: 1.6;
             color: #555;
-            margin-bottom: 20px;
+            margin: 20px 0;
+            padding: 0 10px;
         }
-        /* Instruksi Kecil di atas tombol */
-        .instruksi {
-            margin-top: 20px;
-            margin-bottom: 15px;
-            color: #333;
-            font-weight: 600;
+
+        /* AREA SLOT TOMBOL */
+        #slot-atas, #slot-bawah {
+            min-height: 70px; /* Jaga tinggi biar layout gak kaget */
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        /* Style Tombol Keren */
+
+        /* STYLE TOMBOL */
         #btn-aksi {
             display: inline-block;
-            background: #007bff; /* Biru */
+            background: #007bff; /* Warna Biru */
             color: white;
-            padding: 15px 40px;
+            padding: 15px 45px;
             font-size: 20px;
             font-weight: bold;
             text-decoration: none;
@@ -61,115 +64,155 @@
             transition: all 0.3s;
             cursor: pointer;
             border: none;
-            box-shadow: 0 4px 6px rgba(0,123,255,0.3);
-            user-select: none; 
+            box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+            user-select: none;
+            animation: pulse 2s infinite; /* Efek denyut */
         }
+
         #btn-aksi:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 6px 12px rgba(0,123,255,0.4); 
+            box-shadow: 0 6px 15px rgba(0,123,255,0.4); 
         }
-        /* Warna tombol pas lagi ngitung */
-        #btn-aksi.lagi-ngitung { background: #6c757d; cursor: wait; }
-        /* Warna tombol pas udah siap */
-        #btn-aksi.siap { background: #28a745; box-shadow: 0 4px 6px rgba(40,167,69,0.3); }
-        .error { color: #dc3545; display: none; margin-top: 20px; }
+        
+        /* Tombol saat menghitung */
+        #btn-aksi.lagi-ngitung { 
+            background: #6c757d; 
+            cursor: wait; 
+            animation: none; 
+            box-shadow: none;
+        }
+        
+        /* Tombol saat siap (Hijau) */
+        #btn-aksi.siap { 
+            background: #28a745; 
+            box-shadow: 0 4px 10px rgba(40,167,69,0.3); 
+            animation: pulse 1s infinite;
+        }
+
+        .error { color: #dc3545; display: none; margin-top: 20px; font-weight: bold; }
+
+        /* Animasi Denyut */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
-    <script>
-        (function(wmxu){
-            var d = document,
-            s = d.createElement('script'),
-            l = d.scripts[d.scripts.length - 1];
-            s.settings = wmxu || {};
-            s.src = "\/\/decimalair.com\/bnXbVns.dLG-ls0\/YmW\/cR\/se\/mn9ZuOZHUBlqkTPRTRYx3PMHjdUv0ANiTOIntTNXjbcKy-N\/TLQX1HMvwJ";
-            s.async = true;
-            s.referrerPolicy = 'no-referrer-when-downgrade';
-            l.parentNode.insertBefore(s, l);
-        })({})
-    </script>
+
     <div class="container">
         <h2 id="judul-file">Downloader-File</h2>
+
+        <div id="slot-atas">
+            <a id="btn-aksi" href="#">( DOWNLOAD )</a>
+        </div>
+        
         <div class="deskripsi">
             <p>
-                Terima kasih telah mengunjungi <b>Downloader-File</b>, platform penyedia layanan perantara unduhan yang dirancang untuk kecepatan dan kemudahan. Kami mengerti bahwa waktu Anda sangat berharga, itulah sebabnya sistem kami dioptimalkan untuk memproses tautan unduhan dalam hitungan detik.
+                Terima kasih telah mengunjungi <b>Downloader-File</b>. Kami menyediakan akses unduhan cepat dan aman.
+                Silakan klik tombol download di atas untuk memulai verifikasi link.
             </p>
             <p>
-                Di sini, Anda bisa mendapatkan akses ke berbagai jenis file—mulai dari aplikasi, game modifikasi, dokumen, hingga media hiburan—secara gratis dan aman. Sistem kami secara otomatis memverifikasi ketersediaan file di server tujuan (seperti Sfile.mobi) sebelum Anda mengunduhnya, memastikan tautan yang Anda dapatkan bukanlah tautan rusak (<i>broken link</i>).
+                Sistem kami akan memeriksa keamanan file secara otomatis. Pastikan koneksi internet Anda stabil selama proses verifikasi berlangsung.
+            </p>
+            <p style="margin-top: 10px;">
+                <i>File siap diunduh setelah verifikasi selesai.</i>
             </p>
         </div>
-        <script
-            async="async"
-            data-cfasync="false"
-            src="https://pl28241797.effectivegatecpm.com/60ed2bfa36c8622b6cba8be20ea13e97/invoke.js">
-        </script>
-<div id="container-60ed2bfa36c8622b6cba8be20ea13e97"></div>
-        <p class="instruksi">Klik tombol di bawah untuk memproses link:</p>
-        <a id="btn-aksi" href="#">( DOWNLOAD )</a>
-        <p id="pesan-error" class="error">Link tidak ditemukan di database :(</p>
+
+        <div id="slot-bawah">
+            </div>
+        
+        <p id="pesan-error" class="error">404: Link tidak ditemukan di database.</p>
     </div>
-<div id="container-60ed2bfa36c8622b6cba8be20ea13e97"></div>
+
     <script src="data.js"></script>
+
     <script>
-        // 1. Ambil nama slug dari URL
+        // --- LOGIKA UTAMA ---
         let path = window.location.pathname; 
         let slug = path.replace("/", "").replace(".html", "");
-        // Elemen HTML
+
         let btn = document.getElementById("btn-aksi");
+        let slotBawah = document.getElementById("slot-bawah"); 
         let errorMsg = document.getElementById("pesan-error");
         let judul = document.getElementById("judul-file");
-        // Status Tombol
+
         let linkTujuan = "";
         let sedangMenghitung = false;
         let sudahSiap = false;
+        let tombolMasihDiatas = true; 
+
         // Cek Database
         if(slug === "" || slug === "index") {
             judul.innerText = "Selamat Datang";
             btn.style.display = "none";
-            document.querySelector(".instruksi").style.display = "none"; // Sembunyikan instruksi kalau di home
+            document.querySelector('.deskripsi').style.display = "none"; // Sembunyikan teks di home
         } 
         else if (database_link[slug]) {
             linkTujuan = database_link[slug];
         } 
         else {
             btn.style.display = "none";
-            document.querySelector(".instruksi").style.display = "none";
             errorMsg.style.display = "block";
-            judul.innerText = "Error 404";
+            judul.innerText = "File Tidak Ditemukan";
+            document.querySelector('.deskripsi').style.display = "none";
         }
-        // 2. Logic Klik Tombol
+
+        // KLIK TOMBOL
         btn.addEventListener("click", function(e) {
-            if (!sudahSiap) {
-                e.preventDefault(); 
-                if (!sedangMenghitung && linkTujuan !== "") {
-                    mulaiHitungMundur();
-                }
+            
+            // FASE 1: Tombol masih di atas -> Pindah ke Bawah
+            if (tombolMasihDiatas) {
+                e.preventDefault();
+                
+                // Pindahkan tombol
+                slotBawah.appendChild(btn); 
+                tombolMasihDiatas = false;
+
+                // Scroll ke bawah (Smooth)
+                btn.scrollIntoView({behavior: "smooth", block: "center"});
+
+                // Jalankan Timer
+                mulaiHitungMundur();
             }
+            
+            // FASE 2: Lagi ngitung -> Tahan
+            else if (!sudahSiap) {
+                e.preventDefault();
+            }
+
+            // FASE 3: Sudah siap -> Link jalan
         });
-        // Fungsi Timer
+
         function mulaiHitungMundur() {
             sedangMenghitung = true;
             btn.classList.add("lagi-ngitung"); 
+            
             let detik = 10;
-            btn.innerText = `( DOWNLOAD: ${detik} )`;
+            btn.innerText = `Please Wait... ${detik}`;
+
             let timer = setInterval(function() {
                 detik--;
                 if (detik > 0) {
-                    btn.innerText = `( DOWNLOAD: ${detik} )`;
+                    btn.innerText = `Please Wait... ${detik}`;
                 } else {
                     clearInterval(timer);
                     berubahJadiLink();
                 }
             }, 1000); 
         }
-        // Fungsi Selesai
+
         function berubahJadiLink() {
             sudahSiap = true; 
             btn.classList.remove("lagi-ngitung");
             btn.classList.add("siap"); 
+            
             btn.innerText = "GO TO LINK >>";
             btn.href = linkTujuan; 
         }
     </script>
+
 </body>
 </html>
